@@ -122,6 +122,10 @@ public class webapi
         {
             domain = AuthenticationDomain.authDomainByName(institution);
         }
+        else
+        {
+            domain = AuthenticationDomain.defaultDomain();
+        }
 
         if (userName != null && password != null && domain != null)
         {
