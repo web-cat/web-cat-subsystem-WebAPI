@@ -73,7 +73,8 @@ public class webapi
     public WOActionResults performActionNamed(String actionName)
     {
         if (!"default".equals(actionName)
-            && !"startSession".equals(actionName))
+            && !"startSession".equals(actionName)
+            && !"institutions".equals(actionName))
         {
             // require an active session for all other actions
             if (existingSession() == null)
@@ -161,6 +162,19 @@ public class webapi
         SimpleMessageResponse page = pageWithName(SimpleMessageResponse.class);
         page.message = "session terminated";
         return page;
+    }
+
+
+    // ----------------------------------------------------------
+    /**
+     * Generate a list of all institutions.
+     *
+     * @return The results in an XML response
+     */
+    public WOActionResults institutionsAction()
+    {
+        log.debug("institutionsAction()");
+        return pageWithName(Institutions.class);
     }
 
 
