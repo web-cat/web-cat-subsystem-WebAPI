@@ -65,7 +65,6 @@ public class CoursesAndAssignments
     public NSArray<CourseOffering>     courseOfferings;
     public CourseOffering              aCourseOffering;
 
-    public NSArray<AssignmentOffering> assignmentOfferings;
     public AssignmentOffering          anAssignmentOffering;
 
 
@@ -83,17 +82,20 @@ public class CoursesAndAssignments
                 session().user().teaching(),
                 session().user().TAFor());
 
-        // Now look up all assignments for those courses
-        NSMutableArray<AssignmentOffering> assignments =
-            new NSMutableArray<AssignmentOffering>();
-        for (CourseOffering co : courseOfferings)
-        {
-            assignments.addAll(AssignmentOffering.objectsForCourseOffering(
-                session().sessionContext(), co));
-        }
-        assignmentOfferings = assignments;
-
         // Finally, generate the response
         super.appendToResponse(response, context);
+    }
+
+
+    // ----------------------------------------------------------
+    /**
+     * Retrieve all the assignment offerings associated with the current
+     * course offering stored in aCourseOffering.
+     * @return the list of assignment offerings for this course offering
+     */
+    public NSArray<AssignmentOffering> assignmentOfferings()
+    {
+        return AssignmentOffering.objectsForCourseOffering(
+            session().sessionContext(), aCourseOffering);
     }
 }
