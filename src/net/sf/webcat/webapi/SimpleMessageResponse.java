@@ -51,4 +51,5 @@ extends XmlResponsePage
     //~ KVC Properties ........................................................
 
     public String message = "Invalid request";
+    public String elementName = "error";
 }

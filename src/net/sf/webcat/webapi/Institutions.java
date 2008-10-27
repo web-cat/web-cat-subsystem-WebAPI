@@ -65,4 +65,16 @@ public class Institutions
         institutions = AuthenticationDomain.authDomains();
         super.appendToResponse(response, context);
     }
+
+    // ----------------------------------------------------------
+    public String symbolicName()
+    {
+        String result = anInstitution.propertyName();
+        int pos = result.indexOf('.');
+        if (pos >= 0)
+        {
+            result = result.substring(pos + 1);
+        }
+        return result;
+    }
 }

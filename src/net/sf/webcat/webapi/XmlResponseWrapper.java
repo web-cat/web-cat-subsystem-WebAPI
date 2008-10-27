@@ -23,6 +23,9 @@ package net.sf.webcat.webapi;
 
 import com.webobjects.appserver.WOComponent;
 import com.webobjects.appserver.WOContext;
+import com.webobjects.foundation.NSTimestamp;
+
+import net.sf.webcat.core.Session;
 
 //-------------------------------------------------------------------------
 /**
@@ -46,5 +49,39 @@ public class XmlResponseWrapper
     public XmlResponseWrapper(WOContext context)
     {
         super(context);
+    }
+
+
+    //~ Methods ...............................................................
+
+    // ----------------------------------------------------------
+    /**
+     * Determine whether or not to show the timeout attribute on the
+     * web-cat-response tag.
+     * @return true if the timeout should be shown.
+     */
+    public boolean showTimeout()
+    {
+        return hasSession() && ((Session)session()).user() != null;
+    }
+
+
+    // ----------------------------------------------------------
+    /**
+     * Returns when this page's session will expire.
+     * @return a Unix-style timestamp in milliseconds since
+     * January 1, 1970, 00:00:00 GMT.
+     */
+    public long sessionExpireTime()
+    {
+        if (hasSession())
+        {
+            return (new NSTimestamp()).getTime()         // now
+                + (long)(session().timeOut() * 1000);    // + session timeout
+        }
+        else
+        {
+            return 0L;
+        }
     }
 }

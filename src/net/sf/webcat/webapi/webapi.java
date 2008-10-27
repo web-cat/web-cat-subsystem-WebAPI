@@ -194,6 +194,35 @@ public class webapi
 
 
     // ----------------------------------------------------------
+    /**
+     * Generate a list of all students with a submission for the given
+     * assignment.
+     *
+     * @return The results in an XML response
+     */
+    public WOActionResults studentsAction()
+    {
+        log.debug("studentsAction()");
+        session();
+        return pageWithName(Students.class);
+    }
+
+
+    // ----------------------------------------------------------
+    /**
+     * Retrieve the data about a single submission.
+     *
+     * @return The results in an XML response
+     */
+    public WOActionResults submissionStatsAction()
+    {
+        log.debug("submissionStatsAction()");
+        session();
+        return pageWithName(SubmissionStats.class);
+    }
+
+
+    // ----------------------------------------------------------
     // Just provides some debug logging
     @Override
     public WOSession existingSession()

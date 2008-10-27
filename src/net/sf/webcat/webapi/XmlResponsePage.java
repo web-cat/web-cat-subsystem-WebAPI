@@ -82,24 +82,4 @@ public class XmlResponsePage
     {
         return (Application)super.application();
     }
-
-
-    // ----------------------------------------------------------
-    /**
-     * Returns when this page's session will expire.
-     * @return a Unix-style timestamp in milliseconds since
-     * January 1, 1970, 00:00:00 GMT.
-     */
-    public long sessionExpireTime()
-    {
-        if (hasSession())
-        {
-            return (new NSTimestamp()).getTime()         // now
-                + (long)(session().timeOut() * 1000);    // + session timeout
-        }
-        else
-        {
-            return 0L;
-        }
-    }
 }
