@@ -80,7 +80,7 @@ public class CoursesAndAssignments
         courseOfferings =
             ERXArrayUtilities.arrayByAddingObjectsFromArrayWithoutDuplicates(
                 session().user().teaching(),
-                session().user().TAFor());
+                session().user().graderFor());
 
         // Finally, generate the response
         super.appendToResponse(response, context);

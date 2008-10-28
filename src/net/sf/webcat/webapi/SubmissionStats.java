@@ -85,7 +85,7 @@ public class SubmissionStats
         }
         if (!submission.assignmentOffering().courseOffering().instructors()
                 .contains(session().user())
-            && !submission.assignmentOffering().courseOffering().TAs()
+            && !submission.assignmentOffering().courseOffering().graders()
                 .contains(session().user()))
         {
             log.error("unauthorized attempt to retrieve submission data "

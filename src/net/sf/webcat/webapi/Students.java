@@ -100,7 +100,7 @@ public class Students
         }
         if (!assignmentOffering.courseOffering().instructors().contains(
                 session().user())
-            && !assignmentOffering.courseOffering().TAs().contains(
+            && !assignmentOffering.courseOffering().graders().contains(
                 session().user()))
         {
             log.error("unauthorized attempt to retrieve assignment data "
@@ -124,7 +124,7 @@ public class Students
                 assignmentOffering.courseOffering().instructors());
             ERXArrayUtilities.addObjectsFromArrayWithoutDuplicates(
                 students,
-                assignmentOffering.courseOffering().TAs());
+                assignmentOffering.courseOffering().graders());
         }
 
         submissions = new NSMutableArray<Submission>();
