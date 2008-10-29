@@ -28,7 +28,7 @@ import com.webobjects.foundation.NSTimestamp;
 import net.sf.webcat.core.Application;
 import net.sf.webcat.core.Session;
 
-import er.extensions.ERXComponent;
+import er.extensions.components.ERXComponent;
 
 //-------------------------------------------------------------------------
 /**

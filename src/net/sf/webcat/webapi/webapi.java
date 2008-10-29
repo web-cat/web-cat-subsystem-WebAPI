@@ -24,7 +24,7 @@ package net.sf.webcat.webapi;
 import com.webobjects.appserver.WOActionResults;
 import com.webobjects.appserver.WORequest;
 import com.webobjects.appserver.WOSession;
-import er.extensions.ERXDirectAction;
+import er.extensions.appserver.ERXDirectAction;
 import org.apache.log4j.Logger;
 
 import net.sf.webcat.core.AuthenticationDomain;

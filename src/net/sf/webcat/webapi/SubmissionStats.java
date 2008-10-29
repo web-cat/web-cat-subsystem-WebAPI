@@ -27,7 +27,7 @@ import com.webobjects.appserver.WOResponse;
 
 import org.apache.log4j.Logger;
 
-import er.extensions.ERXValueUtilities;
+import er.extensions.foundation.ERXValueUtilities;
 import net.sf.webcat.grader.Submission;
 
 //-------------------------------------------------------------------------

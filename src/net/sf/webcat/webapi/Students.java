@@ -30,8 +30,8 @@ import com.webobjects.foundation.NSMutableArray;
 
 import org.apache.log4j.Logger;
 
-import er.extensions.ERXArrayUtilities;
-import er.extensions.ERXValueUtilities;
+import er.extensions.foundation.ERXArrayUtilities;
+import er.extensions.foundation.ERXValueUtilities;
 import net.sf.webcat.core.Status;
 import net.sf.webcat.core.User;
 import net.sf.webcat.grader.AssignmentOffering;

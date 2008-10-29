@@ -27,7 +27,7 @@ import com.webobjects.appserver.WOResponse;
 import com.webobjects.foundation.NSArray;
 import com.webobjects.foundation.NSMutableArray;
 
-import er.extensions.ERXArrayUtilities;
+import er.extensions.foundation.ERXArrayUtilities;
 
 import net.sf.webcat.core.CourseOffering;
 import net.sf.webcat.core.Semester;
