@@ -74,7 +74,8 @@ public class CoursesAndAssignments
     public void appendToResponse(WOResponse response, WOContext context)
     {
         // Look up the semesters
-        semesters = Semester.objectsForFetchAll(session().sessionContext());
+        semesters = Semester.allObjectsOrderedByStartDate(
+                session().sessionContext());
 
         // Calculate the courses this user can work with
         courseOfferings =
@@ -95,7 +96,7 @@ public class CoursesAndAssignments
      */
     public NSArray<AssignmentOffering> assignmentOfferings()
     {
-        return AssignmentOffering.objectsForCourseOffering(
+        return AssignmentOffering.offeringsForCourseOffering(
             session().sessionContext(), aCourseOffering);
     }
 }
