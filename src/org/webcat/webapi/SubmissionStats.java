@@ -19,16 +19,16 @@
  |  along with Web-CAT; if not, see <http://www.gnu.org/licenses/>.
 \*==========================================================================*/
 
-package net.sf.webcat.webapi;
+package org.webcat.webapi;
 
 import com.webobjects.appserver.WOComponent;
 import com.webobjects.appserver.WOContext;
 import com.webobjects.appserver.WOResponse;
 
 import org.apache.log4j.Logger;
+import org.webcat.grader.Submission;
 
 import er.extensions.foundation.ERXValueUtilities;
-import net.sf.webcat.grader.Submission;
 
 //-------------------------------------------------------------------------
 /**

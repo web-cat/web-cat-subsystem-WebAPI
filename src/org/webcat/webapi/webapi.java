@@ -19,17 +19,17 @@
  |  along with Web-CAT; if not, see <http://www.gnu.org/licenses/>.
 \*==========================================================================*/
 
-package net.sf.webcat.webapi;
+package org.webcat.webapi;
 
 import com.webobjects.appserver.WOActionResults;
 import com.webobjects.appserver.WORequest;
 import com.webobjects.appserver.WOSession;
 import er.extensions.appserver.ERXDirectAction;
 import org.apache.log4j.Logger;
+import org.webcat.core.AuthenticationDomain;
+import org.webcat.core.Session;
+import org.webcat.core.User;
 
-import net.sf.webcat.core.AuthenticationDomain;
-import net.sf.webcat.core.Session;
-import net.sf.webcat.core.User;
 
 //-------------------------------------------------------------------------
 /**

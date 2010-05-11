@@ -19,26 +19,20 @@
  |  along with Web-CAT; if not, see <http://www.gnu.org/licenses/>.
 \*==========================================================================*/
 
-package net.sf.webcat.webapi;
+package org.webcat.webapi;
 
-import com.webobjects.appserver.WOComponent;
 import com.webobjects.appserver.WOContext;
-import com.webobjects.foundation.NSTimestamp;
-
-import net.sf.webcat.core.Application;
-import net.sf.webcat.core.Session;
-
-import er.extensions.components.ERXComponent;
 
 //-------------------------------------------------------------------------
 /**
- * A common base class for all of the XML response pages in this subsystem.
+ * The basic message page for returning single message responses.  The
+ * default is an "invalid request" message.
  *
  * @author Stephen Edwards
  * @version $Id$
  */
-public class XmlResponsePage
-    extends ERXComponent
+public class SimpleMessageResponse
+extends XmlResponsePage
 {
     //~ Constructor ...........................................................
 
@@ -48,38 +42,14 @@ public class XmlResponsePage
      *
      * @param context The page's context
      */
-    public XmlResponsePage(WOContext context)
+    public SimpleMessageResponse(WOContext context)
     {
         super(context);
     }
 
 
-    //~ Methods ...............................................................
+    //~ KVC Properties ........................................................
 
-    // ----------------------------------------------------------
-    /**
-     * Returns the current session object as the application-specific
-     * subtype <code>Session</code>.  This avoids the need for writing a
-     * downcast on each <code>session</code> call.
-     *
-     * @return The current session
-     */
-    public Session session()
-    {
-        return (Session)super.session();
-    }
-
-
-    // ----------------------------------------------------------
-    /**
-     * Returns the current application object as the application-specific
-     * subtype <code>Application</code>.  This avoids the need for
-     * writing the downcast for each <code>application</code> call.
-     *
-     * @return The current application
-     */
-    public Application application()
-    {
-        return (Application)super.application();
-    }
+    public String message = "Invalid request";
+    public String elementName = "error";
 }

@@ -19,34 +19,36 @@
  |  along with Web-CAT; if not, see <http://www.gnu.org/licenses/>.
 \*==========================================================================*/
 
-package net.sf.webcat.webapi;
+package org.webcat.webapi;
 
+import org.webcat.core.Application;
+import org.webcat.core.Session;
 import com.webobjects.appserver.WOComponent;
 import com.webobjects.appserver.WOContext;
 import com.webobjects.foundation.NSTimestamp;
 
-import net.sf.webcat.core.Session;
+
+import er.extensions.components.ERXComponent;
 
 //-------------------------------------------------------------------------
 /**
- * Sets the MIME type for XML and places an XML header at the top of the
- * output.
+ * A common base class for all of the XML response pages in this subsystem.
  *
  * @author Stephen Edwards
  * @version $Id$
  */
-public class XmlResponseWrapper
-    extends WOComponent
+public class XmlResponsePage
+    extends ERXComponent
 {
-    //~ Constructors ..........................................................
+    //~ Constructor ...........................................................
 
     // ----------------------------------------------------------
     /**
-     * Creates a new page wrapper.
+     * Creates a new page.
      *
      * @param context The page's context
      */
-    public XmlResponseWrapper(WOContext context)
+    public XmlResponsePage(WOContext context)
     {
         super(context);
     }
@@ -56,32 +58,28 @@ public class XmlResponseWrapper
 
     // ----------------------------------------------------------
     /**
-     * Determine whether or not to show the timeout attribute on the
-     * web-cat-response tag.
-     * @return true if the timeout should be shown.
+     * Returns the current session object as the application-specific
+     * subtype <code>Session</code>.  This avoids the need for writing a
+     * downcast on each <code>session</code> call.
+     *
+     * @return The current session
      */
-    public boolean showTimeout()
+    public Session session()
     {
-        return hasSession() && ((Session)session()).user() != null;
+        return (Session)super.session();
     }
 
 
     // ----------------------------------------------------------
     /**
-     * Returns when this page's session will expire.
-     * @return a Unix-style timestamp in milliseconds since
-     * January 1, 1970, 00:00:00 GMT.
+     * Returns the current application object as the application-specific
+     * subtype <code>Application</code>.  This avoids the need for
+     * writing the downcast for each <code>application</code> call.
+     *
+     * @return The current application
      */
-    public long sessionExpireTime()
+    public Application application()
     {
-        if (hasSession())
-        {
-            return (new NSTimestamp()).getTime()         // now
-                + (long)(session().timeOut() * 1000);    // + session timeout
-        }
-        else
-        {
-            return 0L;
-        }
+        return (Application)super.application();
     }
 }

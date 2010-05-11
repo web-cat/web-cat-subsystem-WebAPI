@@ -19,7 +19,7 @@
  |  along with Web-CAT; if not, see <http://www.gnu.org/licenses/>.
 \*==========================================================================*/
 
-package net.sf.webcat.webapi;
+package org.webcat.webapi;
 
 import com.webobjects.appserver.WOContext;
 import com.webobjects.appserver.WOResponse;
@@ -29,13 +29,13 @@ import com.webobjects.foundation.NSDictionary;
 import com.webobjects.foundation.NSMutableArray;
 
 import org.apache.log4j.Logger;
+import org.webcat.core.Status;
+import org.webcat.core.User;
+import org.webcat.grader.AssignmentOffering;
+import org.webcat.grader.Submission;
 
 import er.extensions.foundation.ERXArrayUtilities;
 import er.extensions.foundation.ERXValueUtilities;
-import net.sf.webcat.core.Status;
-import net.sf.webcat.core.User;
-import net.sf.webcat.grader.AssignmentOffering;
-import net.sf.webcat.grader.Submission;
 
 //-------------------------------------------------------------------------
 /**

@@ -19,22 +19,22 @@
  |  along with Web-CAT; if not, see <http://www.gnu.org/licenses/>.
 \*==========================================================================*/
 
-package net.sf.webcat.webapi;
+package org.webcat.webapi;
 
+import com.webobjects.appserver.WOComponent;
 import com.webobjects.appserver.WOContext;
 import com.webobjects.appserver.WOResponse;
-import com.webobjects.foundation.NSArray;
-
-import net.sf.webcat.core.AuthenticationDomain;
+import com.webobjects.appserver.WOSession;
+import org.apache.log4j.Logger;
 
 //-------------------------------------------------------------------------
 /**
- * XML Response page for webapi/institutions requests.
+ * XML Response page for webapi/startSession requests.
  *
  * @author Stephen Edwards
  * @version $Id$
  */
-public class Institutions
+public class StartSession
     extends XmlResponsePage
 {
     //~ Constructor ...........................................................
@@ -45,36 +45,23 @@ public class Institutions
      *
      * @param context The page's context
      */
-    public Institutions(WOContext context)
+    public StartSession(WOContext context)
     {
         super(context);
     }
 
-
-    //~ KVC Properties ........................................................
-
-    public AuthenticationDomain          anInstitution;
-    public NSArray<AuthenticationDomain> institutions;
-
-
-    //~ Methods ...............................................................
-
-    // ----------------------------------------------------------
-    public void appendToResponse(WOResponse response, WOContext context)
+    public void appendToResponse(WOResponse arg0, WOContext arg1)
     {
-        institutions = AuthenticationDomain.authDomains();
-        super.appendToResponse(response, context);
-    }
-
-    // ----------------------------------------------------------
-    public String symbolicName()
-    {
-        String result = anInstitution.propertyName();
-        int pos = result.indexOf('.');
-        if (pos >= 0)
+        WOSession session = session();
+        if (log.isDebugEnabled())
         {
-            result = result.substring(pos + 1);
+            log.debug("session = "
+                + ((session == null) ? "null" : session.sessionID() ));
         }
-        return result;
+        super.appendToResponse(arg0, arg1);
     }
+
+    //~ Instance/static variables .............................................
+
+    static Logger log = Logger.getLogger(StartSession.class);
 }

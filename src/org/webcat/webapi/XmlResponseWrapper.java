@@ -19,49 +19,69 @@
  |  along with Web-CAT; if not, see <http://www.gnu.org/licenses/>.
 \*==========================================================================*/
 
-package net.sf.webcat.webapi;
+package org.webcat.webapi;
 
+import org.webcat.core.Session;
 import com.webobjects.appserver.WOComponent;
 import com.webobjects.appserver.WOContext;
-import com.webobjects.appserver.WOResponse;
-import com.webobjects.appserver.WOSession;
-import org.apache.log4j.Logger;
+import com.webobjects.foundation.NSTimestamp;
+
 
 //-------------------------------------------------------------------------
 /**
- * XML Response page for webapi/startSession requests.
+ * Sets the MIME type for XML and places an XML header at the top of the
+ * output.
  *
  * @author Stephen Edwards
  * @version $Id$
  */
-public class StartSession
-    extends XmlResponsePage
+public class XmlResponseWrapper
+    extends WOComponent
 {
-    //~ Constructor ...........................................................
+    //~ Constructors ..........................................................
 
     // ----------------------------------------------------------
     /**
-     * Creates a new page.
+     * Creates a new page wrapper.
      *
      * @param context The page's context
      */
-    public StartSession(WOContext context)
+    public XmlResponseWrapper(WOContext context)
     {
         super(context);
     }
 
-    public void appendToResponse(WOResponse arg0, WOContext arg1)
+
+    //~ Methods ...............................................................
+
+    // ----------------------------------------------------------
+    /**
+     * Determine whether or not to show the timeout attribute on the
+     * web-cat-response tag.
+     * @return true if the timeout should be shown.
+     */
+    public boolean showTimeout()
     {
-        WOSession session = session();
-        if (log.isDebugEnabled())
-        {
-            log.debug("session = "
-                + ((session == null) ? "null" : session.sessionID() ));
-        }
-        super.appendToResponse(arg0, arg1);
+        return hasSession() && ((Session)session()).user() != null;
     }
 
-    //~ Instance/static variables .............................................
 
-    static Logger log = Logger.getLogger(StartSession.class);
+    // ----------------------------------------------------------
+    /**
+     * Returns when this page's session will expire.
+     * @return a Unix-style timestamp in milliseconds since
+     * January 1, 1970, 00:00:00 GMT.
+     */
+    public long sessionExpireTime()
+    {
+        if (hasSession())
+        {
+            return (new NSTimestamp()).getTime()         // now
+                + (long)(session().timeOut() * 1000);    // + session timeout
+        }
+        else
+        {
+            return 0L;
+        }
+    }
 }

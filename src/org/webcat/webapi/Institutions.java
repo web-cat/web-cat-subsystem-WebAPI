@@ -19,20 +19,23 @@
  |  along with Web-CAT; if not, see <http://www.gnu.org/licenses/>.
 \*==========================================================================*/
 
-package net.sf.webcat.webapi;
+package org.webcat.webapi;
 
+import org.webcat.core.AuthenticationDomain;
 import com.webobjects.appserver.WOContext;
+import com.webobjects.appserver.WOResponse;
+import com.webobjects.foundation.NSArray;
+
 
 //-------------------------------------------------------------------------
 /**
- * The basic message page for returning single message responses.  The
- * default is an "invalid request" message.
+ * XML Response page for webapi/institutions requests.
  *
  * @author Stephen Edwards
  * @version $Id$
  */
-public class SimpleMessageResponse
-extends XmlResponsePage
+public class Institutions
+    extends XmlResponsePage
 {
     //~ Constructor ...........................................................
 
@@ -42,7 +45,7 @@ extends XmlResponsePage
      *
      * @param context The page's context
      */
-    public SimpleMessageResponse(WOContext context)
+    public Institutions(WOContext context)
     {
         super(context);
     }
@@ -50,6 +53,28 @@ extends XmlResponsePage
 
     //~ KVC Properties ........................................................
 
-    public String message = "Invalid request";
-    public String elementName = "error";
+    public AuthenticationDomain          anInstitution;
+    public NSArray<AuthenticationDomain> institutions;
+
+
+    //~ Methods ...............................................................
+
+    // ----------------------------------------------------------
+    public void appendToResponse(WOResponse response, WOContext context)
+    {
+        institutions = AuthenticationDomain.authDomains();
+        super.appendToResponse(response, context);
+    }
+
+    // ----------------------------------------------------------
+    public String symbolicName()
+    {
+        String result = anInstitution.propertyName();
+        int pos = result.indexOf('.');
+        if (pos >= 0)
+        {
+            result = result.substring(pos + 1);
+        }
+        return result;
+    }
 }

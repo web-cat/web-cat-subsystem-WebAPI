@@ -19,8 +19,11 @@
  |  along with Web-CAT; if not, see <http://www.gnu.org/licenses/>.
 \*==========================================================================*/
 
-package net.sf.webcat.webapi;
+package org.webcat.webapi;
 
+import org.webcat.core.CourseOffering;
+import org.webcat.core.Semester;
+import org.webcat.grader.AssignmentOffering;
 import com.webobjects.appserver.WOComponent;
 import com.webobjects.appserver.WOContext;
 import com.webobjects.appserver.WOResponse;
@@ -29,9 +32,6 @@ import com.webobjects.foundation.NSMutableArray;
 
 import er.extensions.foundation.ERXArrayUtilities;
 
-import net.sf.webcat.core.CourseOffering;
-import net.sf.webcat.core.Semester;
-import net.sf.webcat.grader.AssignmentOffering;
 
 //-------------------------------------------------------------------------
 /**
