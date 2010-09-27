@@ -30,14 +30,14 @@ import org.webcat.core.AuthenticationDomain;
 import org.webcat.core.Session;
 import org.webcat.core.User;
 
-
 //-------------------------------------------------------------------------
 /**
  * This direct action class handles all response actions for WebAPI
  * queries from external tools.
  *
- * @author Stephen Edwards
- * @version $Id$
+ * @author  Stephen Edwards
+ * @author  Last changed by $Author$
+ * @version $Revision$, $Date$
  */
 public class webapi
     extends ERXDirectAction

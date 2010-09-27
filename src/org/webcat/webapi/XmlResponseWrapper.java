@@ -21,19 +21,19 @@
 
 package org.webcat.webapi;
 
-import org.webcat.core.Session;
 import com.webobjects.appserver.WOComponent;
 import com.webobjects.appserver.WOContext;
 import com.webobjects.foundation.NSTimestamp;
-
+import org.webcat.core.Session;
 
 //-------------------------------------------------------------------------
 /**
  * Sets the MIME type for XML and places an XML header at the top of the
  * output.
  *
- * @author Stephen Edwards
- * @version $Id$
+ * @author  Stephen Edwards
+ * @author  Last changed by $Author$
+ * @version $Revision$, $Date$
  */
 public class XmlResponseWrapper
     extends WOComponent

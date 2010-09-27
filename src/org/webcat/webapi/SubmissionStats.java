@@ -21,21 +21,19 @@
 
 package org.webcat.webapi;
 
-import com.webobjects.appserver.WOComponent;
 import com.webobjects.appserver.WOContext;
 import com.webobjects.appserver.WOResponse;
-
+import er.extensions.foundation.ERXValueUtilities;
 import org.apache.log4j.Logger;
 import org.webcat.grader.Submission;
-
-import er.extensions.foundation.ERXValueUtilities;
 
 //-------------------------------------------------------------------------
 /**
  * XML Response page for webapi/submissionStats requests.
  *
- * @author Stephen Edwards
- * @version $Id$
+ * @author  Stephen Edwards
+ * @author  Last changed by $Author$
+ * @version $Revision$, $Date$
  */
 public class SubmissionStats
     extends XmlResponsePage

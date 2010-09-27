@@ -26,13 +26,13 @@ import com.webobjects.appserver.WOContext;
 import com.webobjects.appserver.WOResponse;
 import com.webobjects.foundation.NSArray;
 
-
 //-------------------------------------------------------------------------
 /**
  * XML Response page for webapi/institutions requests.
  *
- * @author Stephen Edwards
- * @version $Id$
+ * @author  Stephen Edwards
+ * @author  Last changed by $Author$
+ * @version $Revision$, $Date$
  */
 public class Institutions
     extends XmlResponsePage

@@ -21,21 +21,18 @@
 
 package org.webcat.webapi;
 
+import com.webobjects.appserver.WOContext;
+import er.extensions.components.ERXComponent;
 import org.webcat.core.Application;
 import org.webcat.core.Session;
-import com.webobjects.appserver.WOComponent;
-import com.webobjects.appserver.WOContext;
-import com.webobjects.foundation.NSTimestamp;
-
-
-import er.extensions.components.ERXComponent;
 
 //-------------------------------------------------------------------------
 /**
  * A common base class for all of the XML response pages in this subsystem.
  *
- * @author Stephen Edwards
- * @version $Id$
+ * @author  Stephen Edwards
+ * @author  Last changed by $Author$
+ * @version $Revision$, $Date$
  */
 public class XmlResponsePage
     extends ERXComponent

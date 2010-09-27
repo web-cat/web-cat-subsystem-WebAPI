@@ -21,24 +21,21 @@
 
 package org.webcat.webapi;
 
-import org.webcat.core.CourseOffering;
-import org.webcat.core.Semester;
-import org.webcat.grader.AssignmentOffering;
-import com.webobjects.appserver.WOComponent;
 import com.webobjects.appserver.WOContext;
 import com.webobjects.appserver.WOResponse;
 import com.webobjects.foundation.NSArray;
-import com.webobjects.foundation.NSMutableArray;
-
 import er.extensions.foundation.ERXArrayUtilities;
-
+import org.webcat.core.CourseOffering;
+import org.webcat.core.Semester;
+import org.webcat.grader.AssignmentOffering;
 
 //-------------------------------------------------------------------------
 /**
  * XML Response page for webapi/coursesAndAssignments requests.
  *
- * @author Stephen Edwards
- * @version $Id$
+ * @author  Stephen Edwards
+ * @author  Last changed by $Author$
+ * @version $Revision$, $Date$
  */
 public class CoursesAndAssignments
     extends XmlResponsePage
@@ -78,10 +75,12 @@ public class CoursesAndAssignments
                 session().sessionContext());
 
         // Calculate the courses this user can work with
-        courseOfferings =
+        @SuppressWarnings("unchecked")
+        NSArray<CourseOffering> offerings =
             ERXArrayUtilities.arrayByAddingObjectsFromArrayWithoutDuplicates(
                 session().user().teaching(),
                 session().user().graderFor());
+        courseOfferings = offerings;
 
         // Finally, generate the response
         super.appendToResponse(response, context);

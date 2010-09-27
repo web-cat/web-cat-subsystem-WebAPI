@@ -21,7 +21,6 @@
 
 package org.webcat.webapi;
 
-import com.webobjects.appserver.WOComponent;
 import com.webobjects.appserver.WOContext;
 import com.webobjects.appserver.WOResponse;
 import com.webobjects.appserver.WOSession;
@@ -31,8 +30,9 @@ import org.apache.log4j.Logger;
 /**
  * XML Response page for webapi/startSession requests.
  *
- * @author Stephen Edwards
- * @version $Id$
+ * @author  Stephen Edwards
+ * @author  Last changed by $Author$
+ * @version $Revision$, $Date$
  */
 public class StartSession
     extends XmlResponsePage
@@ -50,7 +50,7 @@ public class StartSession
         super(context);
     }
 
-    public void appendToResponse(WOResponse arg0, WOContext arg1)
+    public void appendToResponse(WOResponse response, WOContext context)
     {
         WOSession session = session();
         if (log.isDebugEnabled())
@@ -58,7 +58,7 @@ public class StartSession
             log.debug("session = "
                 + ((session == null) ? "null" : session.sessionID() ));
         }
-        super.appendToResponse(arg0, arg1);
+        super.appendToResponse(response, context);
     }
 
     //~ Instance/static variables .............................................

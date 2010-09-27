@@ -23,26 +23,23 @@ package org.webcat.webapi;
 
 import com.webobjects.appserver.WOContext;
 import com.webobjects.appserver.WOResponse;
-import com.webobjects.eoaccess.EOUtilities;
 import com.webobjects.foundation.NSArray;
-import com.webobjects.foundation.NSDictionary;
 import com.webobjects.foundation.NSMutableArray;
-
+import er.extensions.foundation.ERXArrayUtilities;
+import er.extensions.foundation.ERXValueUtilities;
 import org.apache.log4j.Logger;
 import org.webcat.core.Status;
 import org.webcat.core.User;
 import org.webcat.grader.AssignmentOffering;
 import org.webcat.grader.Submission;
 
-import er.extensions.foundation.ERXArrayUtilities;
-import er.extensions.foundation.ERXValueUtilities;
-
 //-------------------------------------------------------------------------
 /**
  * XML Response page for webapi/students requests.
  *
- * @author Stephen Edwards
- * @version $Id$
+ * @author  Stephen Edwards
+ * @author  Last changed by $Author$
+ * @version $Revision$, $Date$
  */
 public class Students
     extends XmlResponsePage
@@ -142,20 +139,10 @@ public class Students
                 Submission gradedSubmission = null;
                 // Find the submission
                 NSArray<Submission> thisSubmissionSet =
-                    EOUtilities.objectsMatchingValues(
+                    Submission.objectsMatchingQualifier(
                         session().sessionContext(),
-                        Submission.ENTITY_NAME,
-                        new NSDictionary(
-                            new Object[] {
-                                student,
-                                assignmentOffering
-                            },
-                            new Object[] {
-                                Submission.USER_KEY,
-                                Submission.ASSIGNMENT_OFFERING_KEY
-                            }
-                        )
-                    );
+                        Submission.user.eq(student).and(
+                        Submission.assignmentOffering.eq(assignmentOffering)));
                 log.debug("searching for submissions");
                 for (Submission sub : thisSubmissionSet)
                 {

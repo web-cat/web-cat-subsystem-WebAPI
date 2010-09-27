@@ -28,8 +28,9 @@ import com.webobjects.appserver.WOContext;
  * The basic message page for returning single message responses.  The
  * default is an "invalid request" message.
  *
- * @author Stephen Edwards
- * @version $Id$
+ * @author  Stephen Edwards
+ * @author  Last changed by $Author$
+ * @version $Revision$, $Date$
  */
 public class SimpleMessageResponse
 extends XmlResponsePage
